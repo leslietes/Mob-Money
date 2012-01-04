@@ -4,6 +4,7 @@ interfaces#show
 <p><%= label_tag :element %>: <%= @interface.element %></p>
 <p><%= label_tag :language %>: <%= @interface.language %></p>
 <p><%= label_tag :text %>: <%= @interface.text %></p>
+<p><%= label_tag :deleted %>: <%= @interface.deleted%></p>
 
 <%= link_to 'View All', interfaces_url %> | 
 <%= link_to 'Edit', edit_interface_url(@interface) %>

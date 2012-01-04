@@ -16,7 +16,11 @@ Mobmoney::Application.routes.draw do
   match 'balance'      => 'transactions#balance', :as => :balance
   match 'transfer'     => 'transactions#transfer',:as => :transfer
   
-  resources :interfaces
+  resources :interfaces do
+    member do
+      post 'delete'
+    end
+  end
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

@@ -37,9 +37,20 @@ class InterfacesController < ApplicationController
     end
   end
   
-  def destroy
+  #def destroy
+  #  @interface = Interface.find_by_id(params[:id])
+  #  if @interface.destroy
+  #    flash[:notice] = "Successfully deleted interface."
+  #  else
+  #    flash[:error] = "Error in deleting interface."
+  #  end
+  #  redirect_to interfaces_url
+  #end
+  
+  def delete
     @interface = Interface.find_by_id(params[:id])
-    if @interface.destroy
+    @interface.mark_as_deleted
+    if @interface.save
       flash[:notice] = "Successfully deleted interface."
     else
       flash[:error] = "Error in deleting interface."

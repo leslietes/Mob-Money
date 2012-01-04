@@ -6,6 +6,7 @@
     <th>Element</th>
     <th>Language</th>
     <th>Text</th>
+....<th>Deleted?</th>
     <th>Actions</th>
   </thead>
   <tbody>
@@ -15,9 +16,11 @@
         <td><%= i.element %></td>
         <td><%= i.language%></td>
         <td><%= i.text    %></td>
+        <td><%= i.deleted %></td>
         <td>
             <%= link_to 'Edit', edit_interface_url(i) %> |
-            <%= link_to 'Delete', interface_url(i), :method => :delete, :confirm => "Are you sure?" %> 
+            <%= link_to 'Delete', delete_interface_url(i), :method => :post %>
+            <%#= link_to 'Delete', interface_url(i), :method => :delete, :confirm => "Are you sure?" %> 
         </td>
       </tr>
     <% end %>
