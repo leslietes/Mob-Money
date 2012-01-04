@@ -8,6 +8,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :phone_number,        :null => false,  :limit => 9
       t.integer :counter_user_id,     :null => false
       t.integer :counter_phone_number,:null => false,  :limit => 9
+      t.boolean :deleted,             :default => false
       
       t.integer :created_by_user_id, :null => false
       t.integer :updated_by_user_id, :null => false

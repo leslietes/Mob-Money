@@ -5,6 +5,7 @@ class CreateInterfaces < ActiveRecord::Migration
       t.string :element,  :limit => 20, :default => ''
       t.string :language, :limit => 20, :default => ''
       t.string :text,     :limit => 100,:default => ''
+      t.boolean :deleted, :default => false
       t.timestamps
     end
   end
