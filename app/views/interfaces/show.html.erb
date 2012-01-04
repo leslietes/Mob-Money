@@ -1,0 +1,9 @@
+interfaces#show
+
+<p><%= label_tag :screen %>: <%= @interface.screen %></p>
+<p><%= label_tag :element %>: <%= @interface.element %></p>
+<p><%= label_tag :language %>: <%= @interface.language %></p>
+<p><%= label_tag :text %>: <%= @interface.text %></p>
+
+<%= link_to 'View All', interfaces_url %> | 
+<%= link_to 'Edit', edit_interface_url(@interface) %>

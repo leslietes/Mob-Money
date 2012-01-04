@@ -11,11 +11,12 @@ Mobmoney::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
+  match 'admin'        => 'admin#index',        :as => :admin
   match 'transactions' => 'transactions#index', :as => :transactions
   match 'balance'      => 'transactions#balance', :as => :balance
   match 'transfer'     => 'transactions#transfer',:as => :transfer
   
-#  resources :transactions
+  resources :interfaces
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
