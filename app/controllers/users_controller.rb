@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by_id(params[:id], :include => [:user_phones])
+    @user = User.find_by_id(params[:id], :include => [:user_phone])
   end
   
   def edit
@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       redirect_to user_url(@user)
     else
       flash[:error] = "Unable to add phone number"
+      render :action => 'show'
     end
   end
 end

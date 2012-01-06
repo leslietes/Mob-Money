@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
   
-  has_many :user_phones
+  has_one :user_phone
   
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
@@ -61,6 +61,6 @@ class User < ActiveRecord::Base
   end
   
   def phone_numbers
-    self.user_phones.collect{|nos| nos.phone_number.to_s + ","}
+    self.user_phone.phone_number if self.user_phone
   end
 end

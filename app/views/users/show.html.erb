@@ -1,5 +1,4 @@
 <h1>Show User</h1>
-
   <p><%= label_tag :email_address %>: <%= @user.email_address %></p>
   <p><%= label_tag :surname %>: <%= @user.surname %></p>
   <p><%= label_tag :first_name %>: <%= @user.first_name %></p>
@@ -8,13 +7,9 @@
   <p><%= label_tag :balance %>: <%= @user.balance %></p>
   <p><%= label_tag :user_type %>: <%= @user.user_type %></p>
   <p><%= label_tag :password %>: <%= @user.password %></p>
-  <p>User Phones</p>
-  <ul>
-    <% @user.user_phones.each do |p| %>
-        <li><%= p.phone_number%>
-    <% end %>
-  </ul>
-  <%= render :partial => 'user_phones' %>
+  <p>User Phone: <%= @user.phone_numbers %></p>
+  
+  <%= render :partial => 'user_phones' if @user.phone_numbers.nil? %>
   
   <br/>
   <%= link_to 'Edit', edit_user_url(@user) %> | <%= link_to 'Show All', admin_users_url %>
