@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :second_name,   :limit => 20
       t.string  :language,      :limit => 20
       t.decimal :balance,       :precision => 10, :scale => 2, :default => 0.00, :null => false
-      t.string  :type,          :limit => 20
+      t.string  :user_type,     :limit => 20
       t.boolean :deleted,       :default => false
       
       t.integer :created_by_user_id

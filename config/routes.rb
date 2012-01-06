@@ -1,5 +1,8 @@
 Mobmoney::Application.routes.draw do
-#  devise_for :users
+
+  match "signup"   => "users#new",    :as => :signup
+  match "login"    => "sessions#new", :as => :login
+  match "logout"   => "sessions#destroy", :as => "logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -11,10 +14,27 @@ Mobmoney::Application.routes.draw do
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)
-  match 'admin'        => 'admin#index',        :as => :admin
+  match 'admin'        => 'admin#index',              :as => :admin
+  match 'admin/users'  => 'admin#users',              :as => :admin_users
+  match 'admin/transactions' => 'admin#transactions', :as => :admin_transactions
+  match 'admin/login'  => 'admin#login',              :as => :admin_login
+  
   match 'transactions' => 'transactions#index', :as => :transactions
   match 'balance'      => 'transactions#balance', :as => :balance
   match 'transfer'     => 'transactions#transfer',:as => :transfer
+  
+  resources :users do
+    member do
+      post 'delete'
+      post 'user_phones'
+    end
+  end
+  
+  resources :sessions do
+    collection do
+      post 'create_admin'
+    end
+  end
   
   resources :interfaces do
     member do

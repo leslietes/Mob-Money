@@ -1,0 +1,43 @@
+<h1>User List</h1>
+
+<table>
+    <thead>
+      <th>Email Address</th>
+      <th>Surname</th>
+      <th>First Name</th>
+      <th>Second Name</th>
+      <th>Language</th>
+      <th>Balance</th>
+      <th>Type</th>
+      <th>Deleted?</th>
+      <th>Created By</th>
+      <th>Created At</th>
+      <th>Updated By</th>
+      <th>Updated At</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      <% @users.each do |u| %>
+      <tr>
+        <td><%= u.email_address %></td>
+        <td><%= u.surname %></td>
+        <td><%= u.first_name %></td>
+        <td><%= u.second_name %></td>
+        <td><%= u.language %></td>
+        <td><%= u.balance %></td>
+        <td><%= u.user_type %></td>
+        <td><%= u.deleted %></td>
+        <td><%#= u.created_by %></td>
+        <td><%= u.created_at %></td>
+        <td><%#= u.updated_by %></td>
+        <td><%= u.updated_at %></td>
+        <td>
+            <%= link_to 'Show', user_url(u) %> |
+            <%= link_to 'Edit', edit_user_url(u) %> | <%= link_to 'Delete', delete_user_url(u), :method => :post %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+<br/>
+<%= link_to 'New', new_user_url %>
