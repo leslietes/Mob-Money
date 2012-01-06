@@ -33,6 +33,9 @@ Mobmoney::Application.routes.draw do
   resources :sessions do
     collection do
       post 'create_admin'
+      get 'error_message'
+      #get 'unregistered_number'
+      #get 'incorrect_credentials'
     end
   end
   
