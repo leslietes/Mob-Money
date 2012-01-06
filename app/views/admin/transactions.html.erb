@@ -1,0 +1,43 @@
+<h1>Transaction List</h1>
+
+<table>
+  <thead>
+    <th>Debit</th>
+    <th>Credit</th>
+    <th>Type</th>
+    <th>User</th>
+    <th>Phone No</th>
+    <th>Counter User ID</th>
+    <th>Counter Phone No</th>
+    <th>Created At</th>
+    <th>Created By</th>
+    <th>Updated At</th>
+    <th>Updated By</th>
+	<th>Deleted?</th>
+	<th>Actions</th>
+  </thead>
+  <tbody>
+    <% @transactions.each do |t| %>
+    <tr>
+      <td><%= t.debit %></td>
+      <td><%= t.credit %></td>
+      <td><%= t.type %></td>
+      <td><%= t.user_id %></td>
+      <td><%= t.phone_number %></td>
+      <td><%= t.counter_user_id %></td>
+      <td><%= t.counter_phone_number %></td>
+      <td><%= t.created_at %></td>
+      <td><%= t.created_by %></td>
+      <td><%= t.updated_at %></td>
+      <td><%= t.updated_by %></td>
+      <td><%= t.deleted %></td>
+      <td>
+        <%= link_to 'Edit' %>
+        <%= link_to 'Delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br/><%= link_to 'New' %> | <%= link_to 'Back', admin_url %>

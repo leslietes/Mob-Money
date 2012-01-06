@@ -1,5 +1,5 @@
 class TransactionsController < ApplicationController
-  
+  before_filter :login_required
   def balance
     @balance = '1000'
   end
