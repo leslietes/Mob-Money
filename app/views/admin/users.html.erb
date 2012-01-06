@@ -6,6 +6,7 @@
       <th>Surname</th>
       <th>First Name</th>
       <th>Second Name</th>
+	  <th>Phone Nos</th>
       <th>Language</th>
       <th>Balance</th>
       <th>Type</th>
@@ -23,13 +24,14 @@
         <td><%= u.surname %></td>
         <td><%= u.first_name %></td>
         <td><%= u.second_name %></td>
+		<td><%= u.phone_numbers %></td>
         <td><%= u.language %></td>
         <td><%= u.balance %></td>
         <td><%= u.user_type %></td>
         <td><%= u.deleted %></td>
-        <td><%#= u.created_by %></td>
+        <td><%= u.created_by_user %></td>
         <td><%= u.created_at %></td>
-        <td><%#= u.updated_by %></td>
+        <td><%= u.updated_by_user %></td>
         <td><%= u.updated_at %></td>
         <td>
             <%= link_to 'Show', user_url(u) %> |

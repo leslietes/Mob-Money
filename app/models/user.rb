@@ -49,4 +49,18 @@ class User < ActiveRecord::Base
   def mark_as_deleted
     self.deleted = true
   end
+  
+  def created_by_user
+    return '' if self.created_by_user_id.nil?
+    User.find_by_id(created_by_user_id,:select => "email_address").email_address
+  end
+  
+  def updated_by_user
+    return '' if self.updated_by_user_id.nil?
+    User.find_by_id(self.updated_by_user_id,:select => "email_address").email_address
+  end
+  
+  def phone_numbers
+    self.user_phones.collect{|nos| nos.phone_number.to_s + ","}
+  end
 end

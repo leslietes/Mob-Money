@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     
   def create  
     @user = User.new(params[:user])  
+    @user.created_by_user_id = current_user.id if !current_user.nil?
     if @user.save
       redirect_to admin_users_url, :notice => "Signed up!"  
     else  
@@ -22,6 +23,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find_by_id(params[:id])
+    @user.updated_by_user_id = current_user.id if !current_user.nil?
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully edited user."
       redirect_to user_url(@user)
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Error in deleting user."
     end
-    redirect_to users_url
+    redirect_to admin_users_url
   end
   
   def user_phones
