@@ -22,6 +22,7 @@ Mobmoney::Application.routes.draw do
   match 'transactions' => 'transactions#index', :as => :transactions
   match 'balance'      => 'transactions#balance', :as => :balance
   match 'transfer'     => 'transactions#transfer',:as => :transfer
+  match 'transactions/messages' => 'transactions#messages', :as => :transaction_messages
   
   resources :users do
     member do
@@ -38,6 +39,8 @@ Mobmoney::Application.routes.draw do
       #get 'incorrect_credentials'
     end
   end
+  
+  resources :transactions
   
   resources :interfaces do
     member do

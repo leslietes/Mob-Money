@@ -30,6 +30,24 @@ class User < ActiveRecord::Base
     end  
   end  
   
+  def self.deduct_balance(user_id,amount)
+    return false if !exists?(user_id)
+    if user = find_by_id(user_id)
+      user.balance = user.balance - BigDecimal.new(amount)
+      puts "aaaaaaaaa#{user.balance}"
+      user.save
+    end
+  end
+  
+  def self.add_balance(user_id,amount)
+    return false if !exists?(user_id)
+    if user = find_by_id(user_id)
+      user.balance = user.balance + BigDecimal.new(amount)
+      puts "bbbbbbbbbbb#{user.balance}"
+      user.save
+    end
+  end
+  
   def encrypt_password  
     if password.present?  
       self.password_salt = BCrypt::Engine.generate_salt  
