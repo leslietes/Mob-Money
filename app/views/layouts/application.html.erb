@@ -7,8 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+
 <div>  
   <% if current_user %>  
     Logged in as <%= current_user.email_address %>  
@@ -19,6 +18,9 @@
 	<%= link_to 'Log in as admin', admin_login_path %>
   <% end %>  
 </div>
+
+<p class="notice"><%= flash[:notice] %></p>
+<p class="alert"><%= flash[:error] %></p>
 
 <%= yield %>
 
