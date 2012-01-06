@@ -1,6 +1,6 @@
 class Transaction < ActiveRecord::Base
   
-  def self.debit(current_user_id,phone_fr,phone,user_to,amount)
+  def self.add(current_user_id,phone_fr,phone,user_to,amount)
     
     if Transaction.create(:debit               => amount,
                          :credit               => 0.00,
@@ -12,20 +12,6 @@ class Transaction < ActiveRecord::Base
                          :created_by_user_id   => current_user_id,
                          :updated_by_user_id   => 0)
         User.deduct_balance(current_user_id,amount)
-    end
-  end
-  
-  def self.credit(current_user_id,phone_fr,phone,user_to,amount)
-    
-    if Transaction.create(:debit       => 0.00,
-                       :credit         => amount,
-                       :transaction_type => "transfer-to",
-                       :user_id        => current_user_id,
-                       :phone_number   => phone_fr,
-                       :counter_user_id=> user_to,
-                       :counter_phone_number => phone,
-                       :created_by_user_id   => current_user_id,
-                       :updated_by_user_id   => 0)
         User.add_balance(user_to,amount)
     end
   end

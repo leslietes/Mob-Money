@@ -3,23 +3,37 @@ class TransactionsController < ApplicationController
   before_filter :admin_required, :only => [:new,:create,:edit,:update,:delete]
   
   def index
-    redirect_to root_url
   end
   
   def new
-    
+    @transaction = Transaction.new
   end
   
   def create
-    
+     @transaction = Transaction.new(params[:transaction])
+    if @transaction.save
+      flash[:notice] = "Successfully added transaction."
+      redirect_to @transaction
+    else
+      flash[:error] = "Unable to create transaction. Please check your entries."
+      render :action => 'new'
+    end
   end
   
   def edit
-    
+    @transaction = Transaction.find_by_id(params[:id])
   end
   
   def update
-    
+    @transaction = Transaction.find_by_id(params[:id])
+    if @transaction.update_attributes(params[:transaction])
+      flash[:notice] = "Successfully edited transaction."
+      redirect_to transaction_url(@transaction)
+    else
+      flash[:error] = "Unable to update transaction. Please check your entries"
+      render :action => 'edit'
+    end
+  end
   end
   
   def balance
@@ -43,8 +57,7 @@ class TransactionsController < ApplicationController
       phone_fr=current_user.phone_numbers
       user_to =transfer_to(phone)
       
-      debit = Transaction.debit(current_user.id, phone_fr, phone,user_to,amount )
-      credit= Transaction.credit(current_user.id,phone_fr, phone,user_to,amount )
+      Transaction.add(current_user.id, phone_fr, phone,user_to,amount )
       
       flash[:notice] = "You just sent #{amount} to phone number #{phone}."
       redirect_to root_url

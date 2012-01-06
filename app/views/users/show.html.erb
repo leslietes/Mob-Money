@@ -6,7 +6,6 @@
   <p><%= label_tag :language %>: <%= @user.language %></p>
   <p><%= label_tag :balance %>: <%= @user.balance %></p>
   <p><%= label_tag :user_type %>: <%= @user.user_type %></p>
-  <p><%= label_tag :password %>: <%= @user.password %></p>
   <p>User Phone: <%= @user.phone_numbers %></p>
   
   <%= render :partial => 'user_phones' if @user.phone_numbers.nil? %>

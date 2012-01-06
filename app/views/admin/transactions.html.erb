@@ -19,8 +19,8 @@
   <tbody>
     <% @transactions.each do |t| %>
     <tr>
-      <td><%= number_with_precision(t.debit, :precision => 2) %></td>
-      <td><%= number_with_precision(t.credit,:precision => 2) %></td>
+      <td><%= number_to_currency(t.debit, :unit => '') %></td>
+      <td><%= number_to_currency(t.credit,:unit => '') %></td>
       <td><%= t.transaction_type %></td>
       <td><%= t.user_id %></td>
       <td><%= t.phone_number %></td>

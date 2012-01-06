@@ -26,7 +26,7 @@
         <td><%= u.second_name %></td>
 		<td><%= u.phone_numbers %></td>
         <td><%= u.language %></td>
-        <td><%= u.balance %></td>
+        <td><%= number_to_currency(u.balance, :unit => '') %></td>
         <td><%= u.user_type %></td>
         <td><%= u.deleted %></td>
         <td><%= u.created_by_user %></td>

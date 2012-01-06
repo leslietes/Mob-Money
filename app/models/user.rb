@@ -34,7 +34,6 @@ class User < ActiveRecord::Base
     return false if !exists?(user_id)
     if user = find_by_id(user_id)
       user.balance = user.balance - BigDecimal.new(amount)
-      puts "aaaaaaaaa#{user.balance}"
       user.save
     end
   end
@@ -43,7 +42,6 @@ class User < ActiveRecord::Base
     return false if !exists?(user_id)
     if user = find_by_id(user_id)
       user.balance = user.balance + BigDecimal.new(amount)
-      puts "bbbbbbbbbbb#{user.balance}"
       user.save
     end
   end
