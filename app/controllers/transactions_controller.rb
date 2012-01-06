@@ -34,7 +34,6 @@ class TransactionsController < ApplicationController
       render :action => 'edit'
     end
   end
-  end
   
   def balance
     @balance = current_user.balance
@@ -57,7 +56,11 @@ class TransactionsController < ApplicationController
       phone_fr=current_user.phone_numbers
       user_to =transfer_to(phone)
       
-      Transaction.add(current_user.id, phone_fr, phone,user_to,amount )
+      Transaction.transaction do
+        Transaction.add(current_user.id, phone_fr, phone,user_to,amount )
+        User.deduct_balance(current_user.id,amount)
+        User.add_balance(user_to,amount)
+      end
       
       flash[:notice] = "You just sent #{amount} to phone number #{phone}."
       redirect_to root_url

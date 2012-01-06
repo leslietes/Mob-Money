@@ -11,8 +11,6 @@ class Transaction < ActiveRecord::Base
                          :counter_phone_number => phone,
                          :created_by_user_id   => current_user_id,
                          :updated_by_user_id   => 0)
-        User.deduct_balance(current_user_id,amount)
-        User.add_balance(user_to,amount)
     end
   end
   
