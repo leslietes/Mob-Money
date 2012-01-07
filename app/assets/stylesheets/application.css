@@ -6,4 +6,6 @@
  *= require_tree . 
 */
 
+label { width:150px;display:inline-block; }
+
 #users,#transactions,#interfaces { position:relative;clear:both;font-size:11px;}
