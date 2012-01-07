@@ -5,3 +5,5 @@
  *= require_self
  *= require_tree . 
 */
+
+#users,#transactions,#interfaces { position:relative;clear:both;font-size:11px;}
