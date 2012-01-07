@@ -32,8 +32,8 @@
       <td><%= t.updated_by_user %></td>
       <td><%= t.deleted %></td>
       <td>
-        <%= link_to 'Edit' %>
-        <%= link_to 'Delete' %>
+        <%= link_to 'Edit', edit_transaction_url(t) %>
+        <%#= link_to 'Delete' %>
       </td>
     </tr>
     <% end %>

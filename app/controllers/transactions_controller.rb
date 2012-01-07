@@ -4,6 +4,10 @@ class TransactionsController < ApplicationController
   
   def index
   end
+
+  def show
+    @transaction = Transaction.find_by_id(params[:id])
+  end
   
   def new
     @transaction = Transaction.new
