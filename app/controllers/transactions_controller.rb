@@ -62,7 +62,7 @@ class TransactionsController < ApplicationController
         User.add_balance(user_to,amount)
       end
       
-      flash[:notice] = "You have successfully transferred #{amount} to #{current_user.surname} at #{phone}"
+      flash[:notice] = "You have successfully transferred #{amount} to #{user_to.surname} at #{phone}"
       redirect_to balance_url
     end
   end
