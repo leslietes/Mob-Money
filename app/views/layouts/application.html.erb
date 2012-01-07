@@ -3,7 +3,7 @@
 <head>
   <title>Mobmoney</title>
   <%= stylesheet_link_tag   "datatables","application" %>
-  <%= javascript_include_tag "jquery", "jquery.dataTables", "application" %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -13,7 +13,7 @@
     Logged in as <%= current_user.email_address %>  
     <%= link_to "Log out", logout_path %>  
   <% else %>  
-    <%= link_to "Sign up", signup_path %> or   
+    <%#= link_to "Sign up", signup_path %>   
     <%= link_to "Log in", login_path %>  or
 	<%= link_to 'Log in as admin', admin_login_path %>
   <% end %>  
@@ -23,6 +23,6 @@
 <p class="alert"><%= flash[:error] %></p>
 
 <%= yield %>
-
+<%= javascript_include_tag "jquery", "jquery.dataTables", "application" %>
 </body>
 </html>
