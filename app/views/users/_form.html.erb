@@ -18,7 +18,7 @@
   <p><%= f.label :second_name %><%= f.text_field :second_name %></p>
   <p><%= f.label :language %><%= select("user","language", {"English" => "English", "Swahili" => "Swahili", "Sukuma" => "Sukuma"}) %></p>
   <p><%= f.label :balance %><%= f.text_field :balance %></p>
-  <p><%= f.label :user_type %><%= select("user","user_type", {"Admin" => "Admin", "User" => "User"}, :default => "User") %></p>
+  <p><%= f.label :user_type %><%= select("user","user_type", {"User" => "User","Admin" => "Admin"}) %></p>
   <p><%= f.label :password %><%= f.password_field :password %></p>
   <p><%= f.label :password_confirmation %><%= f.password_field :password_confirmation %>
   <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
