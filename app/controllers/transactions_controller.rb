@@ -30,6 +30,8 @@ class TransactionsController < ApplicationController
   
   def update
     @transaction = Transaction.find_by_id(params[:id])
+    @transaction.updated_by_user_id = current_user.id
+    
     if @transaction.update_attributes(params[:transaction])
       flash[:notice] = "Successfully edited transaction."
       redirect_to transaction_url(@transaction)
@@ -57,11 +59,12 @@ class TransactionsController < ApplicationController
         redirect_to transaction_messages_url(:error => "insufficient funds", :balance => balance) and return
       end
       
-      phone_fr=current_user.phone_numbers
+      phone_fr=session[:phone_no] #current_user.phone_numbers
       user_to =transfer_to(phone)
       
       Transaction.transaction do
-        Transaction.add(current_user.id, phone_fr, phone,user_to,amount )
+        Transaction.debit(current_user.id, phone_fr, phone,user_to,amount )
+        Transaction.credit(current_user.id, phone_fr, phone,user_to,amount )
         User.deduct_balance(current_user.id,amount)
         User.add_balance(user_to,amount)
       end
