@@ -2,6 +2,7 @@
 
 <table id="users">
     <thead>
+      <th>ID</th>
       <th>Email Address</th>
       <th>Surname</th>
       <th>First Name</th>
@@ -20,6 +21,7 @@
     <tbody>
       <% @users.each do |u| %>
       <tr>
+        <td><%= u.id %></td>
         <td><%= u.email_address %></td>
         <td><%= u.surname %></td>
         <td><%= u.first_name %></td>
