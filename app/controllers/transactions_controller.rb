@@ -63,10 +63,10 @@ class TransactionsController < ApplicationController
       user_to =transfer_to(phone)
       
       Transaction.transaction do
-        Transaction.debit(current_user.id, phone_fr, phone,user_to,amount )
-        Transaction.credit(current_user.id, phone_fr, phone,user_to,amount )
+        Transaction.debit(current_user.id, phone_fr, phone,user_to.id,amount )
+        Transaction.credit(current_user.id, phone_fr, phone,user_to.id,amount )
         User.deduct_balance(current_user.id,amount)
-        User.add_balance(user_to,amount)
+        User.add_balance(user_to.id,amount)
       end
       
       flash[:notice] = "You have successfully transferred #{amount} to #{user_to.surname} at #{phone}"

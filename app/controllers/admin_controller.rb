@@ -15,6 +15,6 @@ class AdminController < ApplicationController
   end
   
   def transactions
-    @transactions = Transaction.all
+    @transactions = Transaction.find(:all, :order => "created_at ASC")
   end
 end
