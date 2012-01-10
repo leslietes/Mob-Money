@@ -1,11 +1,15 @@
 class UsersController < ApplicationController
-   def new  
+  before_filter :login_required
+  before_filter :admin_required
+  def new  
     @user = User.new  
   end  
     
   def create  
     @user = User.new(params[:user])  
     @user.created_by_user_id = current_user.id if !current_user.nil?
+    phone = UserPhone.new(:phone_number => params[:phone_number].to_i)
+    @user.user_phones << phone
     if @user.save
       redirect_to admin_users_url, :notice => "Signed up!"  
     else  
@@ -14,7 +18,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by_id(params[:id], :include => [:user_phone])
+    @user = User.find_by_id(params[:id], :include => [:user_phones])
   end
   
   def edit
@@ -55,5 +59,9 @@ class UsersController < ApplicationController
       flash[:error] = "Unable to add phone number"
       render :action => 'show'
     end
+  end
+  
+  def delete_user_phones
+    
   end
 end

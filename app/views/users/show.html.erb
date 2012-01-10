@@ -6,9 +6,13 @@
   <p><%= label_tag :language %>: <%= @user.language %></p>
   <p><%= label_tag :balance %>: <%= @user.balance %></p>
   <p><%= label_tag :user_type %>: <%= @user.user_type %></p>
-  <p>User Phone: <%= @user.phone_numbers %></p>
+  <p>User Phone: <br/>
+  <% @user.user_phones.each do |p| %>
+    <%= p.phone_number %> <%= link_to 'delete', user_user_phone_url(@user,p), :method => :delete, :confirm => "Are you sure?"  %><br/>
+  <% end %>
+  </p>
   
-  <%= render :partial => 'user_phones' if @user.phone_numbers.nil? %>
+  <%= render :partial => 'user_phones' %>
   
   <br/>
   <%= link_to 'Edit', edit_user_url(@user) %> | <%= link_to 'Show All', admin_users_url %>

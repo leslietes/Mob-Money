@@ -10,6 +10,9 @@
   </div>  
   <% end %>  
   <p><%= f.label :email %><%= f.text_field :email_address %></p>
+  <% if controller.action_name == 'new' || controller.action_name == 'create' %>
+  <p><%= label_tag :phone_number %><%= text_field_tag :phone_number %></p>
+  <% end %>
   <p><%= f.label :surname %><%= f.text_field :surname %></p>
   <p><%= f.label :first_name %><%= f.text_field :first_name %></p>
   <p><%= f.label :second_name %><%= f.text_field :second_name %></p>

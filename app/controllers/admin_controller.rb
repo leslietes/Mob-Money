@@ -11,7 +11,7 @@ class AdminController < ApplicationController
   end
   
   def users
-    @users = User.find(:all, :include => [:user_phone])
+    @users = User.find(:all, :include => [:user_phones])
   end
   
   def transactions

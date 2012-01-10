@@ -24,7 +24,11 @@
         <td><%= u.surname %></td>
         <td><%= u.first_name %></td>
         <td><%= u.second_name %></td>
-		<td><%= u.phone_numbers %></td>
+        <td>
+            <% u.phone_numbers.each do |p| %>
+                <%= p.phone_number %><br/>
+            <% end %>
+        </td>
         <td><%= u.language %></td>
         <td><%= number_to_currency(u.balance, :unit => '') %></td>
         <td><%= u.user_type %></td>

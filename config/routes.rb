@@ -27,8 +27,9 @@ Mobmoney::Application.routes.draw do
   resources :users do
     member do
       post 'delete'
-      post 'user_phones'
+      #post 'user_phones'
     end
+    resources :user_phones
   end
   
   resources :sessions do
