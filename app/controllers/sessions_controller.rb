@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:phone_number], params[:password])  
     if user  
       session[:user_id] = user.id  
+      session[:phone_no]= params[:phone_number]
       redirect_to root_url, :notice => "Logged in!"  
     else
       redirect_to error_message_sessions_url(:error => "invalid credentials")

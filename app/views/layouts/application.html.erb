@@ -10,7 +10,7 @@
 
 <div>  
   <% if current_user %>  
-    Logged in as <%= current_user.email_address %>  
+    Logged in as <%= current_user.email_address %> (<%= session[:phone_no]%>) 
     <%= link_to "Log out", logout_path %>  
   <% else %>  
     <%#= link_to "Sign up", signup_path %>   
