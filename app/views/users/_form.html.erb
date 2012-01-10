@@ -21,5 +21,6 @@
   <p><%= f.label :user_type %><%= select("user","user_type", {"Admin" => "Admin", "User" => "User"}) %></p>
   <p><%= f.label :password %><%= f.password_field :password %></p>
   <p><%= f.label :password_confirmation %><%= f.password_field :password_confirmation %>
+  <p><%= f.label :deleted %><%= f.check_box :deleted %></p>
   <p><%= f.submit %></p>
 <% end %>
