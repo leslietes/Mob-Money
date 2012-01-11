@@ -28,3 +28,7 @@
 </table>
 
 <br/><%= render :partial => 'admin/admin_link' %> | <%= link_to 'New', new_interface_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>
