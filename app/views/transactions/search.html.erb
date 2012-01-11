@@ -1,6 +1,5 @@
-<h1>Transaction List</h1>
-
-<%= render :partial => 'transactions/search' %>
+<h1>Search Results</h1>
+<%= render :partial => 'transactions/search'%>
 <table id="transactions">
   <thead>
     <th>Debit</th>
@@ -41,8 +40,4 @@
   </tbody>
 </table>
 
-<br/><%= render :partial => 'admin/admin_link' %> 
-
-<%- content_for(:js_files) do %>
-<%= javascript_include_tag "application" %>
-<% end %>
+<br/><%= render :partial => 'admin/admin_link' %>

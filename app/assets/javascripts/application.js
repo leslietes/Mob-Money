@@ -10,8 +10,5 @@
 
 $(document).ready(function(){
     $("#users").dataTable();
-    $("#transactions").dataTable({
-        "aaSorting": [[10,"asc"]]
-    });
     $("#interfaces").dataTable();
 });

@@ -41,7 +41,12 @@ Mobmoney::Application.routes.draw do
     end
   end
   
-  resources :transactions
+  resources :transactions do
+    collection do
+      post 'search'
+      get 'search'
+    end
+  end
   
   resources :interfaces do
     member do

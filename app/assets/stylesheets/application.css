@@ -9,3 +9,7 @@
 label { width:150px;display:inline-block; }
 
 #users,#transactions,#interfaces { position:relative;clear:both;font-size:11px;}
+
+#search label { width:60px; }
+#search input { width:50px;}
+#search input[type='submit'] { width:80px;}

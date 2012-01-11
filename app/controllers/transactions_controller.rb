@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_filter :login_required
-  before_filter :admin_required, :only => [:new,:create,:edit,:update,:delete]
+  before_filter :admin_required, :only => [:new,:create,:edit,:update,:delete,:search]
   
   def index
   end
@@ -81,6 +81,46 @@ class TransactionsController < ApplicationController
       when "insufficient funds"
         @message = "Amount is more than your balance of #{params[:balance]}."
     end
+  end
+  
+  def search
+    clause = []
+
+    if !params[:date].blank?
+      clause << " DATE(created_at) = '#{params[:date]}' "
+    end
+    
+    if !params[:debit].blank?
+      clause << " debit = #{params[:debit]} "
+    end
+    
+    if !params[:credit].blank?
+      clause << " credit = #{params[:credit]} "
+    end
+    
+    if !params[:type].blank?
+      clause <<  " transaction_type = '#{params[:type]}' "
+    end
+    
+    if !params[:user_id].blank?
+      clause << " user_id = #{params[:user_id]} "
+    end
+    
+    if !params[:phone_no].blank?
+      clause << " phone_number = #{params[:phone_no]} "
+    end
+    
+    if !params[:counter_user_id].blank?
+      clause << " counter_user_id = #{params[:counter_user_id]} "
+    end
+    
+    if !params[:counter_phone_number].blank?
+      clause << " counter_phone_number = #{params[:counter_phone_number]} "
+    end
+    
+    clause = clause.join(' and ')
+    
+    @transactions = Transaction.find(:all, :conditions => clause)
   end
   
   private 
