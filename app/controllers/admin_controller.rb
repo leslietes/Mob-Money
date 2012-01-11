@@ -7,7 +7,10 @@ class AdminController < ApplicationController
   end
   
   def index
-    
+    @user_count = User.all.count
+    @trans_count= Transaction.all.count
+    @balance    = User.sum(:balance)
+    @trans_sum  = Transaction.average(:credit) * 2
   end
   
   def users

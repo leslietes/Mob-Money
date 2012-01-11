@@ -1,9 +1,9 @@
 <b>ADMIN DASHBOARD</b>
 
-<p>Total number of users: </p>
-<p>Total number of transactions: </p>
-<p>Average transaction amount: </p>
-<p>Total user balance: </p>
+<p>Total number of users: <%= @user_count%></p>
+<p>Total number of transactions: <%= @trans_count %></p>
+<p>Average transaction amount: <%= number_to_currency(@trans_sum,:unit => '') %></p>
+<p>Total user balance: <%= number_to_currency(@balance, :unit => '') %></p>
 
 <br/>
 <b>MENU</b>
