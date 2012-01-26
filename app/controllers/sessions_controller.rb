@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def create_admin
     user = User.authenticate_admin(params[:email_address], params[:password])  
     if user  
-      session[:user_id] = user.id  
+      session[:admin_id] = user.id  
       redirect_to admin_url, :notice => "Logged in!"  
     else
       redirect_to error_message_sessions_url(:error => "invalid admin credentials")
@@ -30,6 +30,7 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+    session[:admin_id]= nil
     session[:user_id] = nil
     session[:phone_no]= nil
     redirect_to root_url, :notice => "Logged out!"

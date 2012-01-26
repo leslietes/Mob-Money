@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  helper_method :current_user
+  helper_method :current_user, :admin_user
   
   def login_required
-    if current_user
+    if current_user || admin_user
       return true
     else
       redirect_to login_url
@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
   end
   
   def admin_required
-    if current_user && current_user.is_admin?
+    #if current_user && current_user.is_admin?
+    if admin_user
       return  true 
     else
       redirect_to root_url
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::Base
   
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def admin_user
+    @admin_user ||= User.find(session[:admin_id]) if session[:admin_id]
   end
 end
