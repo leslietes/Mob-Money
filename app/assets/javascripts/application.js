@@ -11,4 +11,5 @@
 $(document).ready(function(){
     $("#users").dataTable();
     $("#interfaces").dataTable();
+    $("#transactions").dataTable();
 });

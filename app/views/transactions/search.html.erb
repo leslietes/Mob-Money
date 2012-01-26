@@ -41,3 +41,7 @@
 </table>
 
 <br/><%= render :partial => 'admin/admin_link' %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>
