@@ -8,7 +8,7 @@
   <p><%= label_tag :user_type %>: <%= @user.user_type %></p>
   <p>User Phone: <br/>
   <% @user.user_phones.each do |p| %>
-    <%= p.phone_number %> <%= link_to 'delete', user_user_phone_url(@user,p), :method => :delete, :confirm => "Are you sure?"  %><br/>
+    <%= p.phone_number %> <%= link_to 'delete', [@user,p], :method => :delete, :confirm => "Are you sure?"  %><br/>
   <% end %>
   </p>
   
@@ -16,3 +16,7 @@
   
   <br/>
   <%= render :partial => 'admin/admin_link' %> | <%= link_to 'Edit', edit_user_url(@user) %> | <%= link_to 'Show All', admin_users_url %>
+
+<%- content_for(:js_files) do %>
+<%= javascript_include_tag "application" %>
+<% end %>
